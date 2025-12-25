@@ -247,26 +247,10 @@ const shouldShowReport = (item) => {
 
 <style lang="less" scoped>
 .other-home_box {
-  height: 100%;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
   background: var(--ai-other-home-bg-color);
 }
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
-}
 
-body {
-  margin: 0;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  -webkit-overflow-scrolling: auto;
-}
 .top-user-info {
   background: url("@/assets/public/top-home.png");
   background-size: cover;
