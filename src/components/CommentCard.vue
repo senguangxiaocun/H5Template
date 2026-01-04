@@ -1,23 +1,23 @@
 <script setup lang="ts">
-  import Head from '@/assets/public/Head.png'
-  import { useAppImgStyle } from '@/hooks/useAppImgStyle'
-  import { detailId } from '@/hooks/useDetail'
-  import { useUserStore } from '@/stores'
+import Head from "@/assets/public/Head.png";
+import { useAppImgStyle } from "@/hooks/useAppImgStyle";
+import { detailId } from "@/hooks/useDetail";
+import { useUserStore } from "@/stores";
 
-  const { reportIcon } = useAppImgStyle()
-  const { userInfo } = useUserStore()
+const { reportIcon } = useAppImgStyle();
+const { userInfo } = useUserStore();
 
-  const props = withDefaults(
-    defineProps<{
-      list?: CommentInfo[]
-    }>(),
-    {
-      list: () => []
-    }
-  )
+const props = withDefaults(
+  defineProps<{
+    list?: CommentInfo[];
+  }>(),
+  {
+    list: () => [],
+  }
+);
 
-  // 举报弹框
-  const isReport = ref(false)
+// 举报弹框
+const isReport = ref(false);
 </script>
 
 <template>
@@ -33,31 +33,26 @@
     >
       <ul flex items-center justify-between>
         <li flex items-center>
-          <van-image
-            round
-            ai-avatar
-            :src="item?.avator || Head"
-            fit="cover"
-          />
-          <span ml-3 ai-user-name>{{ item?.name || '' }}</span>
+          <van-image round ai-avatar :src="item?.avator || Head" fit="cover" />
+          <span ml-3 ai-user-name>{{ item?.name || "" }}</span>
         </li>
         <li v-if="userInfo.userId !== item.userId" flex items-center>
-          <van-image 
+          <van-image
             :src="reportIcon"
             :style="{
               width: 'var(--report-image-width)',
-              height: 'var(--report-image-height)'
+              height: 'var(--report-image-height)',
             }"
             @click="
               () => {
-                isReport = true
-                detailId = item.userId
+                isReport = true;
+                detailId = item.userId;
               }
             "
           />
         </li>
       </ul>
-      <span mt-2 ai-text-desc>{{ item?.content || '' }}</span>
+      <span mt-2 ai-text-desc>{{ item?.content || "" }}</span>
     </div>
 
     <report-box v-model:show="isReport" />
@@ -65,7 +60,11 @@
 </template>
 
 <style lang="less" scoped>
-  .card-comment + .card-comment {
-    margin-top: 12px;
-  } 
+.card-comment {
+  background-color: #ffffff33;
+}
+
+.card-comment + .card-comment {
+  margin-top: 12px;
+}
 </style>

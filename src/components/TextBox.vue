@@ -2,25 +2,33 @@
 const message = defineModel<string>({
   type: String,
   required: true,
-  default: ''
-})
+  default: "",
+});
 
-const props = withDefaults(defineProps<{
-  maxlength?: string | number
-  rows?: string | number
-  bg?: string
-}>(), {
-  maxlength: 150,
-  rows: 6,
-  bg: '#0e080f'
-})
+const props = withDefaults(
+  defineProps<{
+    maxlength?: string | number;
+    rows?: string | number;
+    bg?: string;
+  }>(),
+  {
+    maxlength: 150,
+    rows: 6,
+    bg: "#0e080f",
+  }
+);
 </script>
 
 <template>
   <div class="text-box">
-    <van-field v-model="message" :rows="props.rows" type="textarea" :maxlength="props.maxlength"
-               placeholder="Please enter" show-word-limit
-/>
+    <van-field
+      v-model="message"
+      :rows="props.rows"
+      type="textarea"
+      :maxlength="props.maxlength"
+      placeholder="Please enter"
+      show-word-limit
+    />
     <!-- :style="{ background: props.bg }" -->
   </div>
 </template>
@@ -33,6 +41,7 @@ const props = withDefaults(defineProps<{
 
   :deep(.van-cell) {
     background: var(--ai-form-rich-text-bg-color);
+    background-color: rgba(240, 248, 255, 0.127);
 
     textarea {
       color: var(--ai-form-rich-text-text-color);

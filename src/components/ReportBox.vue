@@ -1,78 +1,78 @@
 <script setup lang="ts">
-  import { showLoadingToast,showSuccessToast,closeToast } from 'vant'
-  import { detailId } from '@/hooks/useDetail'
-  import { useJump } from '@/hooks/useJump'
-  import { useWindow } from '@/hooks/useWindow'
-  import { useUserStore } from '@/stores'
+import { closeToast, showLoadingToast, showSuccessToast } from "vant";
+import { detailId } from "@/hooks/useDetail";
+import { useJump } from "@/hooks/useJump";
+import { useWindow } from "@/hooks/useWindow";
+import { useUserStore } from "@/stores";
 
-  const router = useRouter()
-  const route = useRoute()
-  const show = defineModel<boolean>('show', {
-    type: Boolean,
-    required: true,
-    default: false
-  })
+const router = useRouter();
+const route = useRoute();
+const show = defineModel<boolean>("show", {
+  type: Boolean,
+  required: true,
+  default: false,
+});
 
-  const { winUserListData } = useWindow()
-  const { userInfo } = useUserStore()
-  const { appParams } = useJump()
+const { winUserListData } = useWindow();
+const { userInfo } = useUserStore();
+const { appParams } = useJump();
 
-  const allUserList = ref<UserInfo[]>(winUserListData)
+const allUserList = ref<UserInfo[]>(winUserListData);
 
-  const onReport = () => {
-    router
-      .replace({
-        path: '/report-index',
-        query: { cid: route.query?.id, url: route.path }
-      })
-      .then(() => {
-        show.value = false
-      })
-  }
-
-  const onShield = async () => {
-    // 1. 显示 Loading（手动关闭）
-    showLoadingToast({
-      message: 'Blocking...',
-      forbidClick: true,
-      duration: 0
+const onReport = () => {
+  router
+    .replace({
+      path: "/report-index",
+      query: { cid: route.query?.id, url: route.path },
     })
+    .then(() => {
+      show.value = false;
+    });
+};
 
-    try {
-      // 2. 模拟异步（如果你后面接接口，这里直接 await 接口）
-      await new Promise(resolve =>
-        setTimeout(resolve, Math.floor(Math.random() * (2000 - 500 + 1)) + 500)
-      )
+const onShield = async () => {
+  // 1. 显示 Loading（手动关闭）
+  showLoadingToast({
+    message: "Blocking...",
+    forbidClick: true,
+    duration: 0,
+  });
 
-      const userInfoId = detailId.value
-      userInfo.blockList.push(userInfoId)
-      userInfo.blockList = Array.from(new Set(userInfo.blockList))
+  try {
+    // 2. 模拟异步（如果你后面接接口，这里直接 await 接口）
+    await new Promise((resolve) =>
+      setTimeout(resolve, Math.floor(Math.random() * (2000 - 500 + 1)) + 500)
+    );
 
-      allUserList.value.forEach(v => {
-        if (v.userId === userInfo.userId) {
-          v.blockList = userInfo.blockList
-        }
-      })
+    const userInfoId = detailId.value;
+    userInfo.blockList.push(userInfoId);
+    userInfo.blockList = Array.from(new Set(userInfo.blockList));
 
-      // 3. 关闭 Loading
-      closeToast()
+    allUserList.value.forEach((v) => {
+      if (v.userId === userInfo.userId) {
+        v.blockList = userInfo.blockList;
+      }
+    });
 
-      // 4. 成功提示
-      showSuccessToast('Blocked successfully')
+    // 3. 关闭 Loading
+    closeToast();
 
-      // 5. 延迟执行后续逻辑
-      setTimeout(() => {
-        appParams({
-          key: 'updateUser',
-          value: allUserList.value,
-          state: 0
-        })
-        show.value = false
-      }, 1000)
-    } catch (e) {
-      closeToast()
-    }
+    // 4. 成功提示
+    showSuccessToast("Blocked successfully");
+
+    // 5. 延迟执行后续逻辑
+    setTimeout(() => {
+      appParams({
+        key: "updateUser",
+        value: allUserList.value,
+        state: 0,
+      });
+      show.value = false;
+    }, 1000);
+  } catch (e) {
+    closeToast();
   }
+};
 </script>
 
 <template>
@@ -92,33 +92,36 @@
 </template>
 
 <style lang="less" scoped>
-  .report-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0 30px;
+.report-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 30px;
+  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    li + li {
-      margin-top: 16px;
+  li + li {
+    margin-top: 16px;
+  }
+
+  li {
+    p {
+      width: var(--ai-report-btn-select-style-width);
+      height: var(--ai-report-btn-select-style-height);
+      line-height: var(--ai-report-btn-select-style-height);
     }
 
-    li {
+    &:last-child {
+      margin-top: 32px;
+
       p {
-        width: var(--ai-report-btn-select-style-width);
-        height: var(--ai-report-btn-select-style-height);
-        line-height: var(--ai-report-btn-select-style-height);
-      }
-
-      &:last-child {
-        margin-top: 32px;
-
-        p {
-          width: var(--ai-report-btn-cancel-style-width);
-          height: var(--ai-report-btn-cancel-style-height);
-          line-height: var(--ai-report-btn-cancel-style-height);
-        }
+        width: var(--ai-report-btn-cancel-style-width);
+        height: var(--ai-report-btn-cancel-style-height);
+        line-height: var(--ai-report-btn-cancel-style-height);
       }
     }
   }
+}
 </style>

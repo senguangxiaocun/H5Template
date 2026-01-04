@@ -138,11 +138,11 @@ const shouldShowReport = (item) => {
             absolute
             :src="otherHomeAddIcon"
             fit="cover"
-            @click="onFollow"
             :style="{
               width: 'var(--other-home-follow-width)',
               height: 'var(--other-home-follow-height)',
             }"
+            @click="onFollow"
           />
         </div>
         <span mt-1 ai-user-name>{{ userInfo.name }}</span>
@@ -172,7 +172,7 @@ const shouldShowReport = (item) => {
               height: 'var(--other-home-chat-height)',
             }"
           />
-          <span ml-3 class="public-number !mt-0" @click="onAddChat"> Chat </span>
+          <span ml-3 text-5 font-500 @click="onAddChat"> Chat </span>
         </li>
       </ul>
     </div>
@@ -186,11 +186,10 @@ const shouldShowReport = (item) => {
         @click="onGoDetail(item)"
       >
         <ul class="top-info">
-          <!-- <li>
-            <van-image round ai-avatar :src="Head" fit="cover" />
-            <span mx-2 ai-user-name>Apien</span>
-            <span ai-tag-btn class="tag"># Theme</span>
-          </li> -->
+          <li>
+            <van-image round ai-avatar :src="userInfo.avator || Head" fit="cover" />
+            <span mx-2 ai-user-name>{{ userInfo.name }}</span>
+          </li>
           <li />
           <li>
             <van-image
@@ -218,7 +217,6 @@ const shouldShowReport = (item) => {
               overflow-hidden
               :src="item.dynamicPic[0] || Head"
               fit="cover"
-              position="top"
             />
           </li>
           <!-- <li>

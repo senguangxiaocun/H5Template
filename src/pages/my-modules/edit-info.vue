@@ -1,73 +1,70 @@
 <script setup lang="ts">
-  import { showSuccessToast,showLoadingToast,closeToast } from 'vant'
-  import { reactive } from 'vue'
-  import defaultHead from '@/assets/public/default-head.png'
-  import upImg from '@/assets/public/up-img.png'
-  import { useFile } from '@/hooks/useFile'
-  import { useJump } from '@/hooks/useJump'
-  import { useWindow } from '@/hooks/useWindow'
-  import { useUserStore } from '@/stores'
+import { showSuccessToast, showLoadingToast, closeToast } from "vant";
+import { reactive } from "vue";
+import defaultHead from "@/assets/public/default-head.png";
+import upImg from "@/assets/public/up-img.png";
+import { useFile } from "@/hooks/useFile";
+import { useJump } from "@/hooks/useJump";
+import { useWindow } from "@/hooks/useWindow";
+import { useUserStore } from "@/stores";
 
-  defineOptions({
-    name: 'EditInfo'
-  })
+defineOptions({
+  name: "EditInfo",
+});
 
-  const { userInfo } = useUserStore()
-  const { imgUrl, clickElement } = useFile()
-  const { winUserListData } = useWindow()
-  const { appParams } = useJump()
+const { userInfo } = useUserStore();
+const { imgUrl, clickElement } = useFile();
+const { winUserListData } = useWindow();
+const { appParams } = useJump();
 
-  const formData = reactive({
-    name: '',
-    about: '',
-    avator: ''
-  })
+const formData = reactive({
+  name: "",
+  about: "",
+  avator: "",
+});
 
-  const onSubmit = async () => {
-    // 1. 显示 Loading
-    showLoadingToast({
-      message: 'Saving...',
-      forbidClick: true,
-      duration: 0
-    })
+const onSubmit = async () => {
+  // 1. 显示 Loading
+  showLoadingToast({
+    message: "Saving...",
+    forbidClick: true,
+    duration: 0,
+  });
 
-    // 2. 随机延迟 500–2000ms（模拟真实请求）
-    await new Promise(resolve =>
-      setTimeout(
-        resolve,
-        Math.floor(Math.random() * (2000 - 500 + 1)) + 500
-      )
-    )
+  // 2. 随机延迟 500–2000ms（模拟真实请求）
+  await new Promise((resolve) =>
+    setTimeout(resolve, Math.floor(Math.random() * (2000 - 500 + 1)) + 500)
+  );
 
-    const data = {
-      ...userInfo,
-      name: formData.name || userInfo.name,
-      about: formData.about || userInfo.about,
-      avator: imgUrl.value || userInfo.avator
+  const data = {
+    ...userInfo,
+    name: formData.name || userInfo.name,
+    about: formData.about || userInfo.about,
+    avator: imgUrl.value || userInfo.avator,
+  };
+
+  const list = winUserListData.map((v) => {
+    if (v.userId === data.userId) {
+      return data;
     }
+    return v;
+  });
 
-    const list = winUserListData.map(v => {
-      if (v.userId === data.userId) {
-        return data
-      }
-      return v
-    })
+  // 3. 关闭 Loading
+  closeToast();
 
-    // 3. 关闭 Loading
-    closeToast()
+  // 4. 成功提示
+  showSuccessToast("Saved successfully");
 
-    // 4. 成功提示
-    showSuccessToast('Saved successfully')
-
-    // 5. 延迟 1 秒执行更新
-    setTimeout(() => {
-      appParams({
-        key: 'updateUser',
-        value: list,
-        state: 0
-      })
-    }, 1000)
-  }
+  // 5. 延迟 1 秒执行更新
+  setTimeout(() => {
+    appParams({
+      key: "updateUser",
+      value: list,
+      state: 0,
+    });
+  }, 1000);
+};
 </script>
 
 <template>
@@ -121,11 +118,9 @@
 </template>
 
 <style lang="less" scoped>
-  .edit-info_box {
-    padding-top: calc(
-      var(--van-nav-bar-height) + var(--ai-view-padding-top)
-    );
-    min-height: 100vh;
-    background: var(--ai-edit-bg-color);
-  }
+.edit-info_box {
+  padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
+  min-height: 100vh;
+  background: var(--ai-edit-bg-color);
+}
 </style>

@@ -118,7 +118,7 @@ export default defineConfig({
       'ai-selected-btn',
       {
         background:
-          'var(--ai-highlight-btn-bg-color)',
+          '#BA28FF',
         color: 'var(--ai-highlight-btn-text-color)'
       }
     ],
@@ -133,7 +133,7 @@ export default defineConfig({
         'text-align': 'center',
         'font-weight': 'var(--ai-confirm-btn-font-weight)',
         'border-radius': 'var(--ai-confirm-btn-border-radius)',
-        background: 'var(--ai-highlight-btn-bg-color)',
+        background: '#BA28FF',
         color: 'var(--ai-highlight-btn-text-color)'
       }
     ]
