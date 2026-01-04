@@ -13,8 +13,6 @@ import Message from '@/assets/public/message.png'
 import RightIcon from '@/assets/public/right-icon.png'
 
 export const useAppImgStyle = () => {
-  const styleJson = window.styleJson
-
   /** 输入框右侧图标 */
   const inputSendIcon = computed(() => SendIcon)
 

@@ -1,71 +1,57 @@
 <script setup lang="ts">
-import Followicon from "@/assets/public/gpdojsagn_dshgasdvv.png";
-import Head from "@/assets/public/Head.png";
-import Blackicon from "@/assets/public/hwasbfasbk_daihnvalnvas.png";
-import Fansicon from "@/assets/public/ihdvgsadiaiva_fgihieoubvbade.png";
-import { useJump } from "@/hooks/useJump";
-import { useWindow } from "@/hooks/useWindow";
+import Followicon from '@/assets/public/gpdojsagn_dshgasdvv.png'
+import Head from '@/assets/public/Head.png'
+import Blackicon from '@/assets/public/hwasbfasbk_daihnvalnvas.png'
+import { useJump } from '@/hooks/useJump'
+import { useWindow } from '@/hooks/useWindow'
 
-const { winUserListData } = useWindow();
-const { queryId, appParams } = useJump();
+const { winUserListData } = useWindow()
+const { queryId, appParams } = useJump()
 
-const listData = ref<UserInfo[]>([]);
-const allListUser = ref<UserInfo[]>(winUserListData);
+const listData = ref<UserInfo[]>([])
+const allListUser = ref<UserInfo[]>(winUserListData)
 
 const props = withDefaults(
   defineProps<{
     /**
      * 列表类型 follow: 关注 | fans: 粉丝 | blackList: 黑名单
      */
-    type?: "follow" | "fans" | "blackList";
+    type?: 'follow' | 'fans' | 'blackList'
   }>(),
   {
-    type: "follow",
+    type: 'follow'
   }
-);
+)
 
-const rightIcon = computed(() => {
-  switch (props.type) {
-    case "follow":
-      return "minus";
-    case "fans":
-      return "plus";
-    case "blackList":
-      return "cross";
-    default:
-      return "minus";
-  }
-});
-
-const itemUser = ref<UserInfo>(null);
+const itemUser = ref<UserInfo>(null)
 const getData = () => {
-  const item = winUserListData.find((v) => v.userId === queryId.value);
-  const list = item[props.type === "blackList" ? "blockList" : props.type];
+  const item = winUserListData.find((v) => v.userId === queryId.value)
+  const list = item[props.type === 'blackList' ? 'blockList' : props.type]
 
-  listData.value = winUserListData.filter((v) => list.includes(v.userId));
-  itemUser.value = item;
-};
+  listData.value = winUserListData.filter((v) => list.includes(v.userId))
+  itemUser.value = item
+}
 
 const onClick = (id: string, index: number) => {
   const keyData = {
-    follow: "follow",
-    fans: "fans",
-    blackList: "blockList",
-  }[props.type];
+    follow: 'follow',
+    fans: 'fans',
+    blackList: 'blockList'
+  }[props.type]
 
-  itemUser.value[keyData] = itemUser.value[keyData].filter((v: string) => v !== id);
-  listData.value.splice(index, 1);
+  itemUser.value[keyData] = itemUser.value[keyData].filter((v: string) => v !== id)
+  listData.value.splice(index, 1)
   allListUser.value.forEach((v) => {
     if (v.userId === itemUser.value.userId) {
-      v[keyData] = itemUser.value[keyData];
+      v[keyData] = itemUser.value[keyData]
     }
-  });
-  appParams({ key: "updateUser", value: allListUser.value, state: 1 });
-};
+  })
+  appParams({ key: 'updateUser', value: allListUser.value, state: 1 })
+}
 
 onMounted(() => {
-  getData();
-});
+  getData()
+})
 </script>
 
 <template>

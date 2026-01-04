@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineOptions({
-  name: "UserAgreement",
-});
+  name: 'UserAgreement'
+})
 </script>
 
 <template>
   <div safe-area-inset-top p-layout-padding class="follow_box">
-    <div class="T_title" style="text-align: center">{{ appName }} User Agreement</div>
+    <div class="T_title" style="text-align: center">Sivo User Agreement</div>
     <div class="T_content">
       We hereby advise you to carefully read and understand this User Agreement
       (hereinafter referred to as “Agreement”)before registering. In order to clarify

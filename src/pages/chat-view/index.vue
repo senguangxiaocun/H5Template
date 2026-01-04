@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import ChatBack from "@/assets/public/chat-index.png";
-import MasonryIcon from "@/assets/public/masonry-icon.png";
-import { useAppImgStyle } from "@/hooks/useAppImgStyle";
-import { useJump } from "@/hooks/useJump";
-import { useWindow } from "@/hooks/useWindow";
-import { useUserStore } from "@/stores";
+import ChatBack from '@/assets/public/chat-index.png'
+import MasonryIcon from '@/assets/public/masonry-icon.png'
+import { useAppImgStyle } from '@/hooks/useAppImgStyle'
+import { useJump } from '@/hooks/useJump'
+import { useWindow } from '@/hooks/useWindow'
+import { useUserStore } from '@/stores'
 
 defineOptions({
-  name: "ChatView",
-});
+  name: 'ChatView'
+})
 
-const { chatBtnIcon, chatBgImage } = useAppImgStyle();
-const { winUserData, winUserListData, winChatBotDesc } = useWindow();
-const { userInfo } = useUserStore();
-const { jumpToRecharge, appParams, jumpToChatDetail } = useJump();
+const { chatBgImage } = useAppImgStyle()
+const { winUserData, winUserListData, winChatBotDesc } = useWindow()
+const { userInfo } = useUserStore()
+const { jumpToRecharge, appParams, jumpToChatDetail } = useJump()
 
 /** 弹框  */
-const show = ref(false);
+const show = ref(false)
 
 const onSubmit = () => {
-  show.value = !(userInfo.coins >= winChatBotDesc.points);
+  show.value = !(userInfo.coins >= winChatBotDesc.points)
   if (userInfo.coins >= winChatBotDesc.points) {
     const data = {
       ...winUserData,
-      coins: userInfo.coins - winChatBotDesc.points,
-    };
+      coins: userInfo.coins - winChatBotDesc.points
+    }
 
     const list = winUserListData.map((v) => {
       if (v.userId === data.userId) {
-        v.coins = data.coins;
+        v.coins = data.coins
       }
-      return v;
-    });
-    appParams({ key: "updateUser", value: list, state: 1 });
-    jumpToChatDetail();
+      return v
+    })
+    appParams({ key: 'updateUser', value: list, state: 1 })
+    jumpToChatDetail()
   }
-};
+}
 </script>
 
 <template>
