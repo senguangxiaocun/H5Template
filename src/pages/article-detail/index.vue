@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import Head from "@/assets/public/Head.png";
-import swipeOne from "@/assets/public/swipe-1.png";
-import { useAppImgStyle } from "@/hooks/useAppImgStyle";
-import { useDetail } from "@/hooks/useDetail";
-import { useWindow } from "@/hooks/useWindow";
+import Head from '@/assets/public/Head.png'
+import swipeOne from '@/assets/public/swipe-1.png'
+import { useAppImgStyle } from '@/hooks/useAppImgStyle'
+import { useDetail } from '@/hooks/useDetail'
+import { useWindow } from '@/hooks/useWindow'
 
 defineOptions({
-  name: "ArticleDetail",
-});
+  name: 'ArticleDetail'
+})
 
-const { detailLikeIcon, likeIcon } = useAppImgStyle();
-const { winPublishImageListData } = useWindow();
+const { detailLikeIcon, likeIcon } = useAppImgStyle()
+const { winPublishImageListData } = useWindow()
 const {
   loding,
   dynamicInfo,
@@ -18,8 +18,8 @@ const {
   isLike,
   onAvator,
   onLike,
-  onSend,
-} = useDetail();
+  onSend
+} = useDetail()
 </script>
 
 <template>
@@ -71,7 +71,7 @@ const {
         </li>
       </ul>
 
-      <van-divider content-position="left">Comments</van-divider>
+      <span class="nduhaevae" content-position="left" text-5>Comments</span>
 
       <comment-card :list="commentList" class="article-comment-card_box" />
 
@@ -81,6 +81,13 @@ const {
 </template>
 
 <style lang="less" scoped>
+.nduhaevae {
+  color: #ba28ffff;
+  display: inline-block;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
 .article-detail_box {
   background: var(--ai-article-detail-bg-color);
   min-height: 100vh;
@@ -89,10 +96,14 @@ const {
 .my-swipe {
   .van-swipe-item {
     height: 379px;
+    color: #ffffff;
   }
 }
 
 .article-comment-card_box {
   padding-bottom: calc(80px + var(--ai-view-padding-bottom));
+}
+.public-number {
+  color: #ffffff;
 }
 </style>

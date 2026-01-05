@@ -1,36 +1,31 @@
 <script setup lang="ts">
-import { useAppImgStyle } from "@/hooks/useAppImgStyle";
+import { useAppImgStyle } from '@/hooks/useAppImgStyle'
 
-const { inputSendIcon } = useAppImgStyle();
+const { inputSendIcon } = useAppImgStyle()
 
-const value = ref("");
+const value = ref('')
 
 const emit = defineEmits<{
-  send: [_: string];
-}>();
+  send: [_: string]
+}>()
 const onSend = () => {
-  emit("send", value.value);
-  value.value = "";
-};
+  emit('send', value.value)
+  value.value = ''
+}
 </script>
 
 <template>
   <div safe-area-inset-bottom px-layout-padding class="input-box">
     <div class="input--width">
-      <van-field v-model="value" safe-area-inset-bottom placeholder="Say something">
-        <template #button>
-          <div flex items-center class="van-field__button">
-            <van-image
-              :src="inputSendIcon"
-              :style="{
-                width: 'var(--comment-input-image-width)',
-                height: 'var(--comment-input-image-height)',
-              }"
-              @click="onSend"
-            />
-          </div>
-        </template>
-      </van-field>
+      <van-field
+        v-model="value"
+        placeholder="Say something"
+        class="custom-field"
+        :border="false"
+      />
+
+      <!-- 悬浮发送按钮 -->
+      <van-image class="send-float" :src="inputSendIcon" @click="onSend" />
     </div>
   </div>
 </template>
@@ -49,7 +44,8 @@ const onSend = () => {
 
   .input--width {
     width: var(--ai-field-input-width);
-    padding-bottom: calc(10px + var(--ai-view-padding-bottom));
+    padding-bottom: 42px;
+    position: relative;
   }
 
   .van-field {
@@ -59,10 +55,10 @@ const onSend = () => {
     font-weight: var(--ai-field-input-font-weight);
     background: var(--ai-field-input-bg-color);
 
-    :deep(.van-field__button) {
-      padding-right: 0;
-      margin-right: 0;
-    }
+    // :deep(.van-field__button) {
+    //   padding-right: 0;
+    //   margin-right: 0;
+    // }
 
     :deep(.van-field__body) {
       height: 100%;
@@ -77,6 +73,22 @@ const onSend = () => {
         }
       }
     }
+  }
+
+  /* 给输入框右侧预留空间，防止文字被盖住 */
+  :deep(.custom-field .van-field__body) {
+    padding-right: 48px;
+  }
+
+  /* 悬浮发送按钮 */
+  .send-float {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-100%);
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
   }
 }
 </style>
