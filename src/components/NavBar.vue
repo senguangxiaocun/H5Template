@@ -1,107 +1,91 @@
 <script setup lang="ts">
-  import {
-    navBarStyle,
-    rootRouteList,
-    routeNoNavBar,
-    routeNoRightBtn,
-    routeShowTitle
-    // routeTopNavBar
-  } from '@/config/routes'
-  import { useAppImgStyle } from '@/hooks/useAppImgStyle'
-  import { useJump } from '@/hooks/useJump'
-  import { useWindow } from '@/hooks/useWindow'
-  import { useUserStore } from '@/stores'
+import {
+  navBarStyle,
+  rootRouteList,
+  routeNoNavBar,
+  routeNoRightBtn,
+  routeShowTitle
+  // routeTopNavBar
+} from '@/config/routes'
+import { useAppImgStyle } from '@/hooks/useAppImgStyle'
+import { useJump } from '@/hooks/useJump'
+import { useWindow } from '@/hooks/useWindow'
+import { useUserStore } from '@/stores'
 
-  const { onBack, queryId } = useJump()
+const { onBack, queryId } = useJump()
 
-  const { backIcon, reportIcon } = useAppImgStyle()
+const { backIcon, reportIcon } = useAppImgStyle()
 
-  // 举报弹框
-  const isReport = ref(false)
+// 举报弹框
+const isReport = ref(false)
 
-  const route = useRoute()
-  const { t } = useI18n()
+const route = useRoute()
+const { t } = useI18n()
 
-  const { userInfo } = useUserStore()
-  const { winDynamicData } = useWindow()
+const { userInfo } = useUserStore()
+const { winDynamicData } = useWindow()
 
-  // 是否显示右侧按钮
-  const showRightBtn = computed(() => {
-    const show = ['ArticleDetail', 'ShortVideo'].includes(
-      route.name as string
-    )
-    if (show) {
-      const { userId } = winDynamicData.find(
-        v => v.dynamicId === queryId.value
-      )
-      return userId !== userInfo.userId
-    }
-    return show
-  })
+// 是否显示右侧按钮
+const showRightBtn = computed(() => {
+  const show = ['ArticleDetail', 'ShortVideo'].includes(route.name as string)
+  if (show) {
+    const { userId } = winDynamicData.find((v) => v.dynamicId === queryId.value)
+    return userId !== userInfo.userId
+  }
+  return show
+})
 
-  // 是否显示右侧按钮
-  const isShowOther = computed(() => {
-    const show = ['OtherHome'].includes(
-      route.name as string
-    )
-    if (show) { 
-      return queryId.value !== userInfo.userId
-    }
-    return show
-  })
+// 是否显示右侧按钮
+const isShowOther = computed(() => {
+  const show = ['OtherHome'].includes(route.name as string)
+  if (show) {
+    return queryId.value !== userInfo.userId
+  }
+  return show
+})
 
-  /**
-   * Get page title
-   * Located in src/locales/json
-   */
-  const title = computed(() => {
-    if (route.name) {
-      return t(`${route.meta.title}`)
-    }
+/**
+ * Get page title
+ * Located in src/locales/json
+ */
+const title = computed(() => {
+  if (route.name) {
+    return t(`${route.meta.title}`)
+  }
 
-    return t('navbar.Undefined')
-  })
+  return t('')
+})
 
-  /**
-   * 显示左箭头
-   * 如果路由名称在rootRouteList中，则隐藏左箭头
-   */
-  // const showLeftArrow = computed(() => {
-  //   if (route.name && rootRouteList.includes(route.name)) {
-  //     return false
-  //   }
+/**
+ * 显示左箭头
+ * 如果路由名称在rootRouteList中，则隐藏左箭头
+ */
+// const showLeftArrow = computed(() => {
+//   if (route.name && rootRouteList.includes(route.name)) {
+//     return false
+//   }
 
-  //   return true
-  // })
+//   return true
+// })
 
-  const showLeftArrow = computed(
-    () => !route.name || !rootRouteList.includes(route.name)
-  )
+const showLeftArrow = computed(() => !route.name || !rootRouteList.includes(route.name))
 
-  /** 根据路由是否显示等高的占位元素 */
-  // const placeholder = computed(
-  //   () => !route.name || !routeTopNavBar.includes(route.name)
-  // )
+/** 根据路由是否显示等高的占位元素 */
+// const placeholder = computed(
+//   () => !route.name || !routeTopNavBar.includes(route.name)
+// )
 
-  /** 不显示右边按钮 */
-  const showRight = computed(
-    () => !route.name || !routeNoRightBtn.includes(route.name)
-  )
+/** 不显示右边按钮 */
+const showRight = computed(() => !route.name || !routeNoRightBtn.includes(route.name))
 
-  /** 不显示该组件 */
-  const isNavBar = computed(
-    () => !route.name || !routeNoNavBar.includes(route.name)
-  )
+/** 不显示该组件 */
+const isNavBar = computed(() => !route.name || !routeNoNavBar.includes(route.name))
 
-  /** 是否显示标题 */
-  const showTitle = computed(
-    () => !route.name || routeShowTitle.includes(route.name)
-  )
+/** 是否显示标题 */
+const showTitle = computed(() => !route.name || routeShowTitle.includes(route.name))
 
-  /** 是否显示导航栏样式 */
-  const showNavBarStyle = computed(
-    () => !route.name || navBarStyle.includes(route.name)
-  )
+/** 是否显示导航栏样式 */
+const showNavBarStyle = computed(() => !route.name || navBarStyle.includes(route.name))
 </script>
 
 <template>
@@ -118,8 +102,8 @@
   >
     <template v-if="showLeftArrow" #left>
       <div flex items-end justify-center>
-        <van-image 
-          :src="backIcon" 
+        <van-image
+          :src="backIcon"
           :style="{
             width: 'var(--back-image-width)',
             height: 'var(--back-image-height)',
@@ -134,7 +118,7 @@
         :src="reportIcon"
         :style="{
           width: 'var(--report-image-width)',
-          height: 'var(--report-image-height)'
+          height: 'var(--report-image-height)',
         }"
         @click="isReport = true"
       />
@@ -145,12 +129,8 @@
 </template>
 
 <style lang="less" scoped>
-  .top-nav-bar_box {
-    opacity: 0.5;
-    background: linear-gradient(
-      180deg,
-      rgba(14, 8, 15, 1) 0%,
-      rgba(14, 8, 15, 0) 100%
-    );
-  }
+.top-nav-bar_box {
+  opacity: 0.5;
+  background: linear-gradient(180deg, rgba(14, 8, 15, 1) 0%, rgba(14, 8, 15, 0) 100%);
+}
 </style>
