@@ -2,6 +2,7 @@
 import { closeToast, showLoadingToast, showSuccessToast } from "vant";
 import { reactive } from "vue";
 import upImg from "@/assets/public/aieibqikxvyafivasvc.png";
+import yfyjdf from "@/assets/public/hdqwybzxvadpwiosff.png";
 import { useFile } from "@/hooks/useFile";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
@@ -112,7 +113,7 @@ const onSubmit = async () => {
     <div justify-center flex>
       <van-image
         style="width: 190px; padding-top: 50px; margin-top: 200px"
-        src="src/assets/public/hdqwybzxvadpwiosff.png"
+        :src="yfyjdf"
         fit="cover"
         @click="onSubmit"
       />

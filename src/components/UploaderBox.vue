@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { UploaderFileListItem } from "vant";
+import oieoana from "@/assets/public/ihofeiuf_goiqhroubsaisf.png";
 import { useFile } from "@/hooks/useFile";
 
 const { uploadToOSS } = useFile();
@@ -100,10 +101,7 @@ const onCheckVideo = (item: UploaderFileListItem) => {
         </div>
       </template>
       <template #preview-delete>
-        <van-image
-          src="src/assets/public/ihofeiuf_goiqhroubsaisf.png"
-          style="width: 32px"
-        />
+        <van-image :src="oieoana" style="width: 32px" />
         <!-- <van-image :src="DeleteIcon" /> -->
       </template>
     </van-uploader>

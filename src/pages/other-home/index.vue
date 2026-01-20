@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { showLoadingToast } from "vant";
 import Head from "@/assets/public/Head.png";
+import bnyrhrd from "@/assets/public/oihoaqwkfas_giaqskbca.png";
 import { useAppImgStyle } from "@/hooks/useAppImgStyle";
 import { detailId } from "@/hooks/useDetail";
 import { useJump } from "@/hooks/useJump";
@@ -184,7 +185,7 @@ const shouldShowReport = (item) => {
           <van-image
             v-if="useData.userInfo.userId !== userInfo.userId"
             style="width: 180px"
-            src="src/assets/public/oihoaqwkfas_giaqskbca.png"
+            :src="bnyrhrd"
             fit="cover"
             @click="onAddChat"
           />

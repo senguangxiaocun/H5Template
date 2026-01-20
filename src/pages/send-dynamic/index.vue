@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { closeToast, showLoadingToast, showSuccessToast, showToast } from "vant";
+import bfsdgthsad from "@/assets/public/voisbvdsg_aebnguia8fafi.png";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
 import { useUserStore } from "@/stores";
@@ -108,12 +109,7 @@ const onSubmit = async () => {
 
       <!-- 底部按钮 -->
       <div mt-20 flex justify-center>
-        <van-image
-          style="width: 180px"
-          src="src/assets/public/voisbvdsg_aebnguia8fafi.png"
-          fit="cover"
-          @click="onSubmit"
-        />
+        <van-image style="width: 180px" :src="bfsdgthsad" fit="cover" @click="onSubmit" />
       </div>
     </div>
   </div>
@@ -136,7 +132,7 @@ const onSubmit = async () => {
 
 .send-dynamic_box {
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
-  background: url("src/assets/public/aeuvb7ga3bca_asfui8sfhia.png");
+  background: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/aeuvb7ga3bca_asfui8sfhia.png");
   background-size: cover;
   min-height: 100vh;
 }

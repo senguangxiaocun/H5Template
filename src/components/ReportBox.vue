@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { closeToast, showLoadingToast, showSuccessToast } from "vant";
+import uaiivau from "@/assets/public/dzifhoaseb_ksjvdsiaudb.png";
 import { detailId } from "@/hooks/useDetail";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
@@ -87,7 +88,7 @@ const onShield = async () => {
       <li>
         <van-image
           style="width: 180px"
-          src="src/assets/public/dzifhoaseb_ksjvdsiaudb.png"
+          :src="uaiivau"
           fit="cover"
           @click="show = false"
         />

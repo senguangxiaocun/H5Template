@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { closeToast, showLoadingToast, showSuccessToast, showToast } from "vant";
+import vdrgsdg from "@/assets/public/voisbvdsg_aebnguia8fafi.png";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
 import { useUserStore } from "@/stores";
@@ -91,12 +92,7 @@ const onSubmit = async () => {
 
     <!-- 底部按钮 -->
     <div mt-20 flex justify-center style="margin-top: 200px; padding-bottom: 20px">
-      <van-image
-        style="width: 180px"
-        src="src/assets/public/voisbvdsg_aebnguia8fafi.png"
-        fit="cover"
-        @click="onSubmit"
-      />
+      <van-image style="width: 180px" :src="vdrgsdg" fit="cover" @click="onSubmit" />
     </div>
   </div>
 </template>
@@ -114,7 +110,7 @@ const onSubmit = async () => {
   height: 100vh;
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
   background: var(--ai-publish-video-bg-color);
-  background: url("src/assets/public/xvyu2v4yvvxao_avua9avbvd.png");
+  background: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/xvyu2v4yvvxao_avua9avbvd.png");
   background-size: cover;
 }
 

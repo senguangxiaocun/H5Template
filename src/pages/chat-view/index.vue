@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import dxveivfb from "@/assets/public/fdvbakjbdv_aufbvavdbs.png";
+import jcoiaehf from "@/assets/public/sabvovd_bf43bdkvs8nvs.png";
+import zxmeiuvc from "@/assets/public/xhiofaieofals_vavodiknvpa.png";
 import { useAppImgStyle } from "@/hooks/useAppImgStyle";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
@@ -39,7 +42,7 @@ const onSubmit = () => {
 <template>
   <div relative class="chat-view_box">
     <van-image
-      src="src/assets/public/sabvovd_bf43bdkvs8nvs.png"
+      :src="jcoiaehf"
       fit="cover"
       class="top-back"
       style="height: 300px; width: 375px"
@@ -63,7 +66,7 @@ const onSubmit = () => {
           </p> -->
           <van-image
             style="width: 190px; padding-top: 50px"
-            src="src/assets/public/fdvbakjbdv_aufbvavdbs.png"
+            :src="dxveivfb"
             fit="cover"
             @click="onSubmit"
           />
@@ -87,7 +90,7 @@ const onSubmit = () => {
 
           <van-image
             style="width: 180px"
-            src="src/assets/public/xhiofaieofals_vavodiknvpa.png"
+            :src="zxmeiuvc"
             fit="cover"
             @click="jumpToRecharge()"
           />
@@ -100,7 +103,7 @@ const onSubmit = () => {
 <style lang="less" scoped>
 .chat-view_box {
   // background: var(--ai-chat-view-bg-color);
-  background-image: url("src/assets/public/dhaidvvndbf.png");
+  background-image: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/dhaidvvndbf.png");
   background-size: cover; // 关键 ①：铺满
   height: 100vh;
   overflow-y: auto;

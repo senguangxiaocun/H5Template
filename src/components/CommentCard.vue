@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Head from "@/assets/public/Head.png";
+import Jfgei from "@/assets/public/vugdksivbjaud4_5vsdvaodivh8k.png";
 import { detailId } from "@/hooks/useDetail";
 import { useUserStore } from "@/stores";
 
@@ -41,7 +42,7 @@ const isReport = ref(false);
         </li>
         <li v-if="userInfo.userId !== item.userId" flex items-center>
           <van-image
-            src="src/assets/public/vugdksivbjaud4_5vsdvaodivh8k.png"
+            :src="Jfgei"
             :style="{
               width: 'var(--report-image-width)',
               height: 'var(--report-image-height)',

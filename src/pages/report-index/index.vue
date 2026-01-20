@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { closeToast, showLoadingToast, showSuccessToast } from "vant";
+import qswsawf from "@/assets/public/feiuhahs_iqfba5aobuf2boa.png";
 import defaultOptionIcon from "@/assets/public/siuiiibd8ei_qionasi3ba.png";
 import SelectedIcon from "@/assets/public/uiuyuvi7id3oan_vqo0no1nfh.png";
 import { useJump } from "@/hooks/useJump";
@@ -98,12 +99,7 @@ const onSubmlt = async () => {
 
     <!-- 底部按钮 -->
     <div justify-center flex style="margin-top: 50px; margin-bottom: 20px">
-      <van-image
-        style="width: 180px"
-        src="src/assets/public/feiuhahs_iqfba5aobuf2boa.png"
-        fit="cover"
-        @click="onSubmlt"
-      />
+      <van-image style="width: 180px" :src="qswsawf" fit="cover" @click="onSubmlt" />
     </div>
   </div>
 </template>
@@ -113,7 +109,7 @@ const onSubmlt = async () => {
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
   min-height: 100vh;
   background: var(--ai-report-index-bg-color);
-  background-image: url("src/assets/public/cbvbob7udb3v_apuqbv1nc8an.png");
+  background-image: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/cbvbob7udb3v_apuqbv1nc8an.png");
   background-size: cover;
 }
 

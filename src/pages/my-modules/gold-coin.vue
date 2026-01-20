@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MasonryIcon from "@/assets/public/dvuiauebi7iasv2u_yvuvas8vivdo.png";
 import MyIcon from "@/assets/public/dvuiauebi7iasv2u_yvuvas8vivdo.png";
+import khfhdfrs from "@/assets/public/zxklhi78dvbka3_kkckhfa0vbfs.png";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
 import { useUserStore } from "@/stores";
@@ -58,12 +59,7 @@ const onRecharge = () => {
         <p ai-gradient-btn @click="onRecharge">Recharge</p>
       </div> -->
       <div mt-6 flex justify-center>
-        <van-image
-          style="width: 180px"
-          src="src/assets/public/zxklhi78dvbka3_kkckhfa0vbfs.png"
-          fit="cover"
-          @click="onRecharge"
-        />
+        <van-image style="width: 180px" :src="khfhdfrs" fit="cover" @click="onRecharge" />
       </div>
     </div>
   </div>
@@ -120,7 +116,7 @@ const onRecharge = () => {
 
   .on-active {
     // background: var(--ai-coin-select-style-selected-color);
-    background-image: url("src/assets/public/saiuuve4vasi8qhfuik1_aufsiovh8vbia.png");
+    background-image: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/saiuuve4vasi8qhfuik1_aufsiovh8vbia.png");
     background-size: cover; // 关键 ①：铺满
     color: #ffffff !important;
 

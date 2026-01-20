@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
 import CryptoJS from "crypto-js";
+import Nhudwib from "@/assets/public/fshegioe_ruhwobd.png";
 import { useUserStore } from "@/stores";
 
 defineOptions({
@@ -124,27 +125,15 @@ const onSend = async (v: string) => {
       <ul p-layout-padding>
         <li>
           <span>I'm feeling great today.</span>
-          <van-image
-            style="width: 16px"
-            src="src/assets/public/fshegioe_ruhwobd.png"
-            fit="cover"
-          />
+          <van-image style="width: 16px" :src="Nhudwib" fit="cover" />
         </li>
         <li>
           <span>Do you like reading?</span>
-          <van-image
-            style="width: 16px"
-            src="src/assets/public/fshegioe_ruhwobd.png"
-            fit="cover"
-          />
+          <van-image style="width: 16px" :src="Nhudwib" fit="cover" />
         </li>
         <li>
           <span>Can you comfort me?</span>
-          <van-image
-            style="width: 16px"
-            src="src/assets/public/fshegioe_ruhwobd.png"
-            fit="cover"
-          />
+          <van-image style="width: 16px" :src="Nhudwib" fit="cover" />
         </li>
       </ul>
     </div>
@@ -160,14 +149,14 @@ const onSend = async (v: string) => {
 .chat-details_box {
   min-height: 100vh;
   background: var(--ai-chat-details-bg-color);
-  background-image: url("src/assets/public/dhaidvvndbf.png");
+  background-image: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/dhaidvvndbf.png");
   background-size: cover; // 关键 ①：铺满
 }
 
 .top-box {
   height: 300px;
   // background: url("@/assets/public/top-chat.png");
-  background-image: url("src/assets/public/dsnkaiog_aifhqoife.png");
+  background-image: url("https://huanniuchat.oss-ap-northeast-1.aliyuncs.com/cosky_20260115/dsnkaiog_aifhqoife.png");
   background-size: cover;
   display: flex;
   align-items: flex-end;

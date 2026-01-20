@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { AppCommunication } from "@/hooks/useJump";
+import bhiufoa from "@/assets/public/9ojhndvnsvodin.png";
+import hagqbvu from "@/assets/public/saihfoalksfvads.png";
 import { useJump } from "@/hooks/useJump";
 
 defineOptions({
@@ -44,7 +46,7 @@ const onSelect = (value: string) => {
       <li flex justify-center>
         <van-image
           style="width: 310px"
-          src="src/assets/public/9ojhndvnsvodin.png"
+          :src="bhiufoa"
           fit="cover"
           @click="onState('deleteaccount')"
         />
@@ -52,7 +54,7 @@ const onSelect = (value: string) => {
       <li mt-5 flex justify-center>
         <van-image
           style="width: 310px"
-          src="src/assets/public/saihfoalksfvads.png"
+          :src="hagqbvu"
           fit="cover"
           @click="onState('logout')"
         />
