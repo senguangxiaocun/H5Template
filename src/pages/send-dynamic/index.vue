@@ -19,6 +19,7 @@ const formData = reactive({
   dynamicDesc: "",
   dynamicTitleType: 0,
   dynamicPic: [],
+  dynamicTag: [],
 });
 
 const onSubmit = async () => {
@@ -33,7 +34,6 @@ const onSubmit = async () => {
   }
 
   const data = {
-    dynamicTag: [],
     ...formData,
     dynamicVideo: "",
     dynamicLikeCount: 0,
