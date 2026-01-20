@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  background: var(--van-gray-1);
+  font-size: var(--van-font-size-lg);
+  color-scheme: light;
+}
+html.dark {
+  background: #222;
+  color-scheme: dark;
+}
+#app {
+  height: 100%;
+  position: relative;
+  background: #0e080f;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+.public-number {
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 21.2px;
+  text-align: center;
+  vertical-align: top;
+}
+.public-input {
+  border-radius: var(--ai-input-text-border-radius);
+  background: var(--ai-input-text-bg-color) !important;
+}
+.public-input input {
+  color: var(--ai-input-text-color);
+}
+.public-input input::placeholder {
+  color: var(--ai-input-text-placeholder-text-color);
+  font-size: var(--ai-input-text-font-size);
+  font-weight: var(--ai-input-text-font-weight);
+}
+.public-btoom-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+  background: linear-gradient(0deg, rgba(14, 8, 15, 0.8) 0%, rgba(14, 8, 15, 0) 100%);
+}
+.public-btoom-btn .public_btn {
+  margin-bottom: calc(10px + var(--ai-view-padding-bottom));
+}

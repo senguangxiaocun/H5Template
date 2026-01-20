@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  defineOptions({
-    name: 'Fans'
-  })
+defineOptions({
+  name: "Fans",
+});
 </script>
 
 <template>
@@ -11,11 +11,10 @@
 </template>
 
 <style lang="less" scoped>
-  .fans_box {
-    padding-top: calc(
-      var(--van-nav-bar-height) + var(--ai-view-padding-top)
-    );
-    min-height: 100vh;
-    background: var(--ai-fans-bg-color);
-  }
+.fans_box {
+  padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
+  min-height: 100vh;
+  background: var(--ai-fans-bg-color);
+  background: #f5f6f8ff;
+}
 </style>

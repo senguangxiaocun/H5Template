@@ -1,54 +1,53 @@
 <script setup lang="ts">
-  import Head from '@/assets/public/Head.png'
-  import { useAppImgStyle } from '@/hooks/useAppImgStyle'
-  import { useDetail } from '@/hooks/useDetail'
-  import { useUserStore } from '@/stores'
+import Head from "@/assets/public/Head.png";
+import { useAppImgStyle } from "@/hooks/useAppImgStyle";
+import { useDetail } from "@/hooks/useDetail";
+import { useUserStore } from "@/stores";
 
-  defineOptions({
-    name: 'ShortVideo'
-  })
+defineOptions({
+  name: "ShortVideo",
+});
 
-  const { reportIcon, addIcon, messageIcon, detailLikeIcon, likeIcon } =
-    useAppImgStyle()
-  const { userInfo } = useUserStore()
-  const {
-    loding,
-    dynamicInfo,
-    commentList,
-    isVideoLike,
-    isFollow,
-    onAvator,
-    onFollow,
-    onSend,
-    onVideoLike
-  } = useDetail()
+const { reportIcon, addIcon, messageIcon, detailLikeIcon, likeIcon } = useAppImgStyle();
+const { userInfo } = useUserStore();
+const {
+  loding,
+  dynamicInfo,
+  commentList,
+  isVideoLike,
+  isFollow,
+  onAvator,
+  onFollow,
+  onSend,
+  onVideoLike,
+} = useDetail();
 
-  const videoRef = ref(null)
-  const isPlaying = ref(false)
-  const isPopup = ref(false)
-  // 举报弹框
-  const isReport = ref(false)
+const videoRef = ref(null);
+const isPlaying = ref(false);
+const isPopup = ref(false);
+// 举报弹框
+const isReport = ref(false);
 
-  const togglePlay = async () => {
-    if (!videoRef.value) return
+const togglePlay = async () => {
+  if (!videoRef.value) return;
 
-    if (isPlaying.value) {
-      videoRef.value.pause()
+  if (isPlaying.value) {
+    videoRef.value.pause();
 
-      // videoRef.value.play().catch((err) => {
-      //   console.error('播放失败:', err)
-      // })
+    // videoRef.value.play().catch((err) => {
+    //   console.error('播放失败:', err)
+    // })
 
-      isPlaying.value = false
-    } else {
-      try {
-        await videoRef.value.play()
-        isPlaying.value = true
-      } catch (error) {
-        console.warn('自动播放被阻止:', error)
-      }
+    isPlaying.value = false;
+  } else {
+    try {
+      await videoRef.value.play();
+      isPlaying.value = true;
+    } catch (error) {
+      console.warn("自动播放被阻止:", error);
     }
   }
+};
 </script>
 
 <template>
@@ -89,28 +88,30 @@
             absolute
             :src="addIcon"
             fit="cover"
-            @click="onFollow"
             :style="{
               width: 'var(--video-details-follow-width)',
-              height: 'var(--video-details-follow-height)'
+              height: 'var(--video-details-follow-height)',
             }"
+            @click="onFollow"
           />
         </div>
         <ul ml-3 shrink w-full>
           <li flex justify-between>
-            <span ai-user-name>{{ dynamicInfo?.name }}</span>
+            <span ai-user-name style="color: #fff; font-weight: 600" size->{{
+              dynamicInfo?.name
+            }}</span>
             <van-image
               v-if="userInfo.userId !== dynamicInfo?.userId"
               :src="reportIcon"
               :style="{
                 width: 'var(--report-image-width)',
-                height: 'var(--report-image-height)'
+                height: 'var(--report-image-height)',
               }"
               @click="isReport = true"
             />
           </li>
           <li>
-            <span mt-1 ai-text-desc>
+            <span mt-1 style="color: #fff" text-3>
               {{ dynamicInfo?.dynamicDesc }}
             </span>
           </li>
@@ -118,13 +119,13 @@
       </div>
       <ul class="bottom-btn">
         <li @click="isPopup = true">
-          <van-image 
-            :src="messageIcon" 
+          <van-image
+            :src="messageIcon"
             class="icon-box"
             :style="{
               width: 'var(--video-details-comment-width)',
-              height: 'var(--video-details-comment-height)'
-            }" 
+              height: 'var(--video-details-comment-height)',
+            }"
           />
           <span class="public-number">
             {{ dynamicInfo?.dynamicCommentCount }}
@@ -136,7 +137,7 @@
             class="icon-box"
             :style="{
               width: 'var(--unlike-image-width)',
-              height: 'var(--unlike-image-height)'
+              height: 'var(--unlike-image-height)',
             }"
             @click="onVideoLike"
           />
@@ -147,16 +148,19 @@
       </ul>
     </div>
 
-    <popup-box v-model:show="isPopup">
+    <popup-box v-model:show="isPopup" style="background-color: #f5f6f8">
       <div p-layout-padding>
-        <van-divider content-position="left">Comments</van-divider>
+        <p
+          content-position="left"
+          style="color: black; margin-bottom: 20px; font-weight: 700; margin-top: 10px"
+          text-5
+        >
+          COMMENTS
+        </p>
         <div class="h-[56vh] overflow-y-auto">
-          <comment-card
-            :list="commentList"
-            class="video-comment-card_box"
-          />
+          <comment-card :list="commentList" class="video-comment-card_box" />
         </div>
-        <input-box @send="v => onSend(v, 1)" />
+        <input-box @send="(v) => onSend(v, 1)" />
       </div>
     </popup-box>
 
@@ -165,68 +169,69 @@
 </template>
 
 <style lang="less" scoped>
-  .video-comment-card_box {
-    padding-bottom: calc(60px + var(--ai-view-padding-bottom));
-  }  
-  .video-box {
+.video-comment-card_box {
+  padding-bottom: calc(60px + var(--ai-view-padding-bottom));
+}
+.video-box {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  video {
     width: 100%;
-    height: 100vh;
-    position: relative;
+    height: 100%;
+    background: var(--ai-short-video-bg-color);
+  }
 
-    video {
-      width: 100%;
-      height: 100%;
-      background: var(--ai-short-video-bg-color);
-    }
+  .play-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    color: rgba(255, 255, 255, 0.7);
+  }
 
-    .play-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 64px;
-      color: rgba(255, 255, 255, 0.7);
-    }
+  .bottom-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // background: linear-gradient(180deg, rgba(14, 8, 15, 0.8) 0%, rgba(14, 8, 15, 0) 100%);
+  }
 
-    .bottom-box {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      // background: linear-gradient(180deg, rgba(14, 8, 15, 0.8) 0%, rgba(14, 8, 15, 0) 100%);
-    }
+  .user-head {
+    width: var(--ai-short-video-avatar-width);
+    height: var(--ai-short-video-avatar-height);
+  }
 
-    .user-head {
-      width: var(--ai-short-video-avatar-width);
-      height: var(--ai-short-video-avatar-height);
-    }
+  .bottom-btn {
+    display: flex;
+    justify-content: space-between;
 
-    .bottom-btn {
+    li {
+      position: relative;
+      width: var(--ai-short-video-bottom-btn-width);
+      height: var(--ai-short-video-bottom-btn-height);
+      border-radius: var(--ai-short-video-bottom-btn-border-radius);
+      background: var(--ai-short-video-bottom-btn-bg-color);
+      background-color: #fff;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      li {
-        position: relative;
-        width: var(--ai-short-video-bottom-btn-width);
-        height: var(--ai-short-video-bottom-btn-height);
-        border-radius: var(--ai-short-video-bottom-btn-border-radius);
-        background: var(--ai-short-video-bottom-btn-bg-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+      .icon-box {
+        position: absolute;
+        bottom: 26px;
+        z-index: 1;
+      }
 
-        .icon-box {
-          position: absolute;
-          bottom: 26px;
-          z-index: 1;
-        }
-
-        .public-number {
-          font-size: 20px !important;
-          margin-top: 22px;
-        }
+      .public-number {
+        font-size: 20px !important;
+        margin-top: 22px;
       }
     }
   }
+}
 </style>

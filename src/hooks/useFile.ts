@@ -96,6 +96,82 @@ export const useFile = (cb?: UploadSuccessCallback) => {
     }
   }
 
+  // const uploadToOSS = async (item: UploaderFileListItem) => {
+  //   item.status = 'uploading'
+  //   item.message = 'Uploading...'
+
+  //   const file = item.file
+  //   const sts: stsTypeData = stsData.value
+
+  //   const client = new OSS({
+  //     accessKeyId: sts.AccessKeyId,
+  //     accessKeySecret: sts.AccessKeySecret,
+  //     stsToken: sts.SecurityToken,
+  //     bucket: sts.bucket,
+
+  //     // iOS 必须使用地域域名
+  //     endpoint: 'https://oss-cn-hangzhou.aliyuncs.com',
+  //     secure: true,
+  //     cname: false,
+  //     enableProxy: false,
+  //     timeout: 60000,
+
+  //     refreshSTSToken: async () => {
+  //       const resp = await getSTS()
+  //       return {
+  //         accessKeyId: resp.AccessKeyId,
+  //         accessKeySecret: resp.AccessKeySecret,
+  //         stsToken: resp.SecurityToken
+  //       }
+  //     },
+  //     refreshSTSTokenInterval: 900000
+  //   })
+
+  //   const uploadOptions = {
+  //     timeout: 60000,
+  //     partSize: 0,
+  //     parallel: 1,
+  //     headers: {
+  //       Connection: 'close'
+  //     }
+  //   }
+
+  //   try {
+  //     if (file.type.startsWith('video/')) {
+  //       const key = `template_development/${Date.now()}_${file.name}`
+
+  //       const coverBlob = await extractCoverFromVideo(file)
+  //       const coverFile = new File([coverBlob], 'cover.jpg', {
+  //         type: 'image/jpeg',
+  //         lastModified: Date.now()
+  //       })
+
+  //       const coverKey = `template_development/${Date.now()}_cover.jpg`
+
+  //       const coverRes = await client.put(coverKey, coverFile, uploadOptions)
+
+  //       // 释放 WKWebView 连接
+  //       await new Promise(r => setTimeout(r, 300))
+
+  //       const videoRes = await client.put(key, file, uploadOptions)
+
+  //       item.objectUrl = coverRes.url
+  //       item.status = ''
+  //       return videoRes.url
+  //     } else {
+  //       const key = `template_development/${Date.now()}_${file.name}`
+  //       const res = await client.put(key, file, uploadOptions)
+  //       item.status = ''
+  //       return res.url
+  //     }
+  //   } catch (err) {
+  //     item.status = 'failed'
+  //     item.message = 'Failed...'
+  //     console.error('OSS upload failed:', err)
+  //     throw err
+  //   }
+  // }
+
   const createFileInput = (): HTMLInputElement => {
     const input = document.createElement('input')
     input.type = 'file'

@@ -43,7 +43,7 @@ export default defineConfig({
     // 用户名称样式
     [
       'ai-user-name',
-      { 'font-size': 'var(--ai-user-name-font-size)', 'font-weight': 'var(--ai-user-name-weight)', color: 'var(--ai-user-name-text-color)' }
+      { 'font-size': 'var(--ai-user-name-font-size)', 'font-weight': 'var(--ai-user-name-weight)', color: '#222222' }
     ],
     // 文本描述样式
     [
@@ -51,7 +51,7 @@ export default defineConfig({
       {
         'font-size': 'var(--ai-prose-text-font-size)',
         'font-weight': 'var(--ai-prose-text-font-weight)',
-        color: 'var(--ai-prose-text-color)',
+        color: '#232323',
         display: 'inline-block',
         wordWrap: 'break-word',
         whiteSpace: 'normal',
@@ -64,11 +64,11 @@ export default defineConfig({
       {
         'font-size': 'var(--ai-tag-font-size)',
         'font-weight': 'var(--ai-tag-font-weight)',
-        width: 'var(--ai-tag-width)',
+        width: '83px',
         height: 'var(--ai-tag-height)',
         'line-height': 'var(--ai-tag-height)',
         display: 'block',
-        color: 'var(--ai-tag-text-color)',
+        color: '#222222',
         background: 'var(--ai-tag-bg-color)',
         'text-align': 'center',
         'border-radius': 'var(--ai-tag-border-radius)'
@@ -78,7 +78,7 @@ export default defineConfig({
     [
       'ai-fill-bg',
       {
-        background: ' #282329cc'
+        background: ' #ffffff'
       }
     ],
     // 通用的圆角

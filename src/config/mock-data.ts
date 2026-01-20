@@ -40,14 +40,14 @@ window.reportListJson = window.reportListJson || ReportJson
 
 /** 发布图片选项 */
 window.publishImageListJson = window.publishImageListJson || [
-  { name: 'Hobbies', value: 0 },
-  { name: 'Passion', value: 1 },
-  { name: 'Inspire', value: 2 }
+  { name: 'Final Shots', value: 0 },
+  { name: 'Makeup', value: 1 },
+  { name: 'Props', value: 2 }
 ]
 
 /** 聊天机器人说明 */
 window.chatBotDesc = window.chatBotDesc || {
-  title: '这个是标题',
-  content: '内容说明',
-  points: 100
+  title: '',
+  content: 'Hi! I\'m Cosky AI, your personal COSPLAY AI assistant. Whether you are a newbie trying your first look or a seasoned pro crafting stunning cos, I am here to provide guidance for your creation, answer your questions, and help you shine in every role. Are you ready to explore together?',
+  points: 200
 }

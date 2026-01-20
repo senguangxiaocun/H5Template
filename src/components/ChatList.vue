@@ -1,19 +1,19 @@
 <script setup lang="ts">
-  import Head from '@/assets/public/ai-head.png'
+import Head from "@/assets/public/suievfe9gfbua_quebbs73ba.png";
 
-  const listData = defineModel<MessageInfo[]>('list', {
-    type: Array as PropType<MessageInfo[]>,
-    required: true,
-    default: () => []
-  })
+const listData = defineModel<MessageInfo[]>("list", {
+  type: Array as PropType<MessageInfo[]>,
+  required: true,
+  default: () => [],
+});
 
-  const emit = defineEmits<{
-    send: [_: string]
-  }>()
+const emit = defineEmits<{
+  send: [_: string];
+}>();
 
-  const onSend = (v: string) => {
-    emit('send', v)
-  }
+const onSend = (v: string) => {
+  emit("send", v);
+};
 </script>
 
 <template>
@@ -57,7 +57,7 @@
 
       <div v-if="item.position === 'right'">
         <div flex justify-end class="content">
-          <div v-if="item.sendContent" class="user-chat">
+          <div v-if="item.sendContent" class="user--chat">
             <p ai-text-desc class="send-box">
               {{ item.sendContent }}
             </p>
@@ -88,36 +88,39 @@
 </template>
 
 <style lang="less" scoped>
-  .list-box {
-    padding-top: 16px;
+.list-box {
+  padding-top: 16px;
 
-    .content + .content {
-      margin-top: 40px;
-    }
+  .content + .content {
+    margin-top: 40px;
   }
+}
 
-  .user-head {
-    width: var(--ai-chat-list-avatar-width);
-    height: var(--ai-chat-list-avatar-height);
-    flex-shrink: 0;
+.user-head {
+  width: var(--ai-chat-list-avatar-width);
+  height: var(--ai-chat-list-avatar-height);
+  flex-shrink: 0;
+}
+
+.user-chat {
+  color: #fff;
+
+  p {
+    padding: 12px;
+    border-radius: 0px var(--ai-chat-list-avatar-border-radius)
+      var(--ai-chat-list-avatar-border-radius) var(--ai-chat-list-avatar-border-radius);
+    // background: var(--ai-chat-list-receive-bg-color);
+    color: #ffffff;
+    background: linear-gradient(to right, #ec5b79, #f093ae);
+    border: 2px solid #fff;
   }
+}
 
-  .user-chat {
-    color: #fff;
-
-    p {
-      padding: 12px;
-      border-radius: 0px var(--ai-chat-list-avatar-border-radius)
-        var(--ai-chat-list-avatar-border-radius)
-        var(--ai-chat-list-avatar-border-radius);
-      background: var(--ai-chat-list-receive-bg-color);
-    }
-  }
-
-  .send-box {
-    background: var(--ai-chat-list-send-bg-color) !important;
-    border-radius: var(--ai-chat-list-avatar-border-radius) 0px
-      var(--ai-chat-list-avatar-border-radius)
-      var(--ai-chat-list-avatar-border-radius) !important;
-  }
+.send-box {
+  // background: var(--ai-chat-list-send-bg-color) !important;
+  background-color: #ffffff;
+  border-radius: var(--ai-chat-list-avatar-border-radius) 0px
+    var(--ai-chat-list-avatar-border-radius) var(--ai-chat-list-avatar-border-radius) !important;
+  padding: 12px;
+}
 </style>

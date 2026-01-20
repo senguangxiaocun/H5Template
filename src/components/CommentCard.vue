@@ -1,23 +1,21 @@
 <script setup lang="ts">
-  import Head from '@/assets/public/Head.png'
-  import { useAppImgStyle } from '@/hooks/useAppImgStyle'
-  import { detailId } from '@/hooks/useDetail'
-  import { useUserStore } from '@/stores'
+import Head from "@/assets/public/Head.png";
+import { detailId } from "@/hooks/useDetail";
+import { useUserStore } from "@/stores";
 
-  const { reportIcon } = useAppImgStyle()
-  const { userInfo } = useUserStore()
+const { userInfo } = useUserStore();
 
-  const props = withDefaults(
-    defineProps<{
-      list?: CommentInfo[]
-    }>(),
-    {
-      list: () => []
-    }
-  )
+const props = withDefaults(
+  defineProps<{
+    list?: CommentInfo[];
+  }>(),
+  {
+    list: () => [],
+  }
+);
 
-  // 举报弹框
-  const isReport = ref(false)
+// 举报弹框
+const isReport = ref(false);
 </script>
 
 <template>
@@ -31,33 +29,32 @@
       ai-rounded
       class="card-comment"
     >
-      <ul flex items-center justify-between>
+      <ul flex items-start justify-between>
         <li flex items-center>
-          <van-image
-            round
-            ai-avatar
-            :src="item?.avator || Head"
-            fit="cover"
-          />
-          <span ml-3 ai-user-name>{{ item?.name || '' }}</span>
+          <van-image round ai-avatar :src="item?.avator || Head" fit="cover" />
+          <span ml-3 ai-user-name>{{ item?.name || "" }} :</span>
+        </li>
+        <li flex-1 mx-3>
+          <span ai-text-desc class="block mt-2">
+            {{ item?.content || "" }}
+          </span>
         </li>
         <li v-if="userInfo.userId !== item.userId" flex items-center>
-          <van-image 
-            :src="reportIcon"
+          <van-image
+            src="src/assets/public/vugdksivbjaud4_5vsdvaodivh8k.png"
             :style="{
               width: 'var(--report-image-width)',
-              height: 'var(--report-image-height)'
+              height: 'var(--report-image-height)',
             }"
             @click="
               () => {
-                isReport = true
-                detailId = item.userId
+                isReport = true;
+                detailId = item.userId;
               }
             "
           />
         </li>
       </ul>
-      <span mt-2 ai-text-desc>{{ item?.content || '' }}</span>
     </div>
 
     <report-box v-model:show="isReport" />
@@ -65,7 +62,7 @@
 </template>
 
 <style lang="less" scoped>
-  .card-comment + .card-comment {
-    margin-top: 12px;
-  } 
+.card-comment + .card-comment {
+  margin-top: 12px;
+}
 </style>

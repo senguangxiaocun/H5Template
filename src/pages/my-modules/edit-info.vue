@@ -1,73 +1,70 @@
 <script setup lang="ts">
-  import { showSuccessToast,showLoadingToast,closeToast } from 'vant'
-  import { reactive } from 'vue'
-  import defaultHead from '@/assets/public/default-head.png'
-  import upImg from '@/assets/public/up-img.png'
-  import { useFile } from '@/hooks/useFile'
-  import { useJump } from '@/hooks/useJump'
-  import { useWindow } from '@/hooks/useWindow'
-  import { useUserStore } from '@/stores'
+import { closeToast, showLoadingToast, showSuccessToast } from "vant";
+import { reactive } from "vue";
+import upImg from "@/assets/public/aieibqikxvyafivasvc.png";
+import defaultHead from "@/assets/public/default-head.png";
+import { useFile } from "@/hooks/useFile";
+import { useJump } from "@/hooks/useJump";
+import { useWindow } from "@/hooks/useWindow";
+import { useUserStore } from "@/stores";
 
-  defineOptions({
-    name: 'EditInfo'
-  })
+defineOptions({
+  name: "EditInfo",
+});
 
-  const { userInfo } = useUserStore()
-  const { imgUrl, clickElement } = useFile()
-  const { winUserListData } = useWindow()
-  const { appParams } = useJump()
+const { userInfo } = useUserStore();
+const { imgUrl, clickElement } = useFile();
+const { winUserListData } = useWindow();
+const { appParams } = useJump();
 
-  const formData = reactive({
-    name: '',
-    about: '',
-    avator: ''
-  })
+const formData = reactive({
+  name: "",
+  about: "",
+  avator: "",
+});
 
-  const onSubmit = async () => {
-    // 1. 显示 Loading
-    showLoadingToast({
-      message: 'Saving...',
-      forbidClick: true,
-      duration: 0
-    })
+const onSubmit = async () => {
+  // 1. 显示 Loading
+  showLoadingToast({
+    message: "Saving...",
+    forbidClick: true,
+    duration: 0,
+  });
 
-    // 2. 随机延迟 500–2000ms（模拟真实请求）
-    await new Promise(resolve =>
-      setTimeout(
-        resolve,
-        Math.floor(Math.random() * (2000 - 500 + 1)) + 500
-      )
-    )
+  // 2. 随机延迟 500–2000ms（模拟真实请求）
+  await new Promise((resolve) =>
+    setTimeout(resolve, Math.floor(Math.random() * (2000 - 500 + 1)) + 500)
+  );
 
-    const data = {
-      ...userInfo,
-      name: formData.name || userInfo.name,
-      about: formData.about || userInfo.about,
-      avator: imgUrl.value || userInfo.avator
+  const data = {
+    ...userInfo,
+    name: formData.name || userInfo.name,
+    about: formData.about || userInfo.about,
+    avator: imgUrl.value || userInfo.avator,
+  };
+
+  const list = winUserListData.map((v) => {
+    if (v.userId === data.userId) {
+      return data;
     }
+    return v;
+  });
 
-    const list = winUserListData.map(v => {
-      if (v.userId === data.userId) {
-        return data
-      }
-      return v
-    })
+  // 3. 关闭 Loading
+  closeToast();
 
-    // 3. 关闭 Loading
-    closeToast()
+  // 4. 成功提示
+  showSuccessToast("Saved successfully");
 
-    // 4. 成功提示
-    showSuccessToast('Saved successfully')
-
-    // 5. 延迟 1 秒执行更新
-    setTimeout(() => {
-      appParams({
-        key: 'updateUser',
-        value: list,
-        state: 0
-      })
-    }, 1000)
-  }
+  // 5. 延迟 1 秒执行更新
+  setTimeout(() => {
+    appParams({
+      key: "updateUser",
+      value: list,
+      state: 0,
+    });
+  }, 1000);
+};
 </script>
 
 <template>
@@ -78,12 +75,11 @@
         round
         h-20
         w-20
-        :src="imgUrl || defaultHead"
+        :src="imgUrl || userInfo.avator"
         fit="cover"
         @click="clickElement"
       />
       <van-image
-        round
         h-7
         w-7
         bottom-0
@@ -96,7 +92,7 @@
     </div>
 
     <div px-layout-padding>
-      <div ai-input-title style="margin-bottom: 16px">Name</div>
+      <div style="margin-bottom: 16px; font-weight: 700">NAME</div>
       <van-field
         v-model="formData.name"
         placeholder="Please enter"
@@ -104,28 +100,47 @@
       />
     </div>
 
-    <div px-layout-padding pt-6>
+    <!-- <div px-layout-padding pt-6>
       <div ai-input-title style="margin-bottom: 16px">About me</div>
       <van-field
         v-model="formData.about"
         placeholder="Please enter"
         class="public-input"
       />
-    </div>
+    </div> -->
 
     <!-- 底部按钮 -->
-    <div mt-50 flex justify-center>
-      <div ai-gradient-btn @click="onSubmit">Save</div>
+    <div justify-center flex>
+      <van-image
+        style="width: 190px; padding-top: 50px; margin-top: 200px"
+        src="src/assets/public/hdqwybzxvadpwiosff.png"
+        fit="cover"
+        @click="onSubmit"
+      />
     </div>
   </div>
 </template>
 
 <style lang="less" scoped>
-  .edit-info_box {
-    padding-top: calc(
-      var(--van-nav-bar-height) + var(--ai-view-padding-top)
-    );
-    min-height: 100vh;
-    background: var(--ai-edit-bg-color);
-  }
+.edit-info_box {
+  padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
+  min-height: 100vh;
+  background: var(--ai-edit-bg-color);
+  background: #f5f6f8ff;
+}
+
+.public-input {
+  background: #fff !important;
+  color: black !important;
+}
+
+/* 默认输入文字颜色 */
+.public-input :deep(.van-field__control) {
+  color: #000000;
+}
+
+/* placeholder 颜色 */
+.public-input :deep(.van-field__control::placeholder) {
+  color: #999999;
+}
 </style>
