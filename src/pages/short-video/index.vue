@@ -157,10 +157,10 @@ const togglePlay = async () => {
         >
           COMMENTS
         </p>
+        <input-box @send="(v) => onSend(v, 1)" />
         <div class="h-[56vh] overflow-y-auto">
           <comment-card :list="commentList" class="video-comment-card_box" />
         </div>
-        <input-box @send="(v) => onSend(v, 1)" />
       </div>
     </popup-box>
 
