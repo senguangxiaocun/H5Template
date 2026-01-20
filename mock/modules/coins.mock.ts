@@ -2,7 +2,7 @@
 export default [
   {
     // lvbsvhxcgcrvesor dbumwhgmoavanvjw
-    key: 'lvbsvhxcgcrvesor',
+    key: 'dbumwhgmoavanvjw',
     cions: 400,
     meney: 0.99
   },
