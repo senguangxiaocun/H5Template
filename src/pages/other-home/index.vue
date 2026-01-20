@@ -11,12 +11,7 @@ defineOptions({
   name: "other-home",
 });
 
-const {
-  reportIcon,
-  otherHomeAddIcon,
-  otherHomeMessageIcon,
-  otherHomeLikeIcon,
-} = useAppImgStyle();
+const { reportIcon, otherHomeLikeIcon } = useAppImgStyle();
 const { queryId, jumpToDetail, appParams, jumpToPrivateChat } = useJump();
 const { winUserListData, winDynamicData, winChatListData } = useWindow();
 const useData = useUserStore();
@@ -45,20 +40,20 @@ const onGoDetail = (item: DynamicInfo) => {
   jumpToDetail(item.dynamicId, item.dynamicType, queryId.value);
 };
 
-const onFollow = () => {
-  useData.userInfo.follow.push(userInfo.value.userId);
-  userInfo.value.fans.push(useData.userInfo.userId);
-  allUserList.value.forEach((v) => {
-    if (v.userId === useData.userInfo.userId) {
-      v.follow = useData.userInfo.follow;
-    }
-    if (v.userId === userInfo.value.userId) {
-      v.fans = userInfo.value.fans;
-    }
-  });
-  isShowFollow.value = true;
-  appParams({ key: "updateUser", value: allUserList.value, state: 1 });
-};
+// const onFollow = () => {
+//   useData.userInfo.follow.push(userInfo.value.userId);
+//   userInfo.value.fans.push(useData.userInfo.userId);
+//   allUserList.value.forEach((v) => {
+//     if (v.userId === useData.userInfo.userId) {
+//       v.follow = useData.userInfo.follow;
+//     }
+//     if (v.userId === userInfo.value.userId) {
+//       v.fans = userInfo.value.fans;
+//     }
+//   });
+//   isShowFollow.value = true;
+//   appParams({ key: "updateUser", value: allUserList.value, state: 1 });
+// };
 
 const getCurrentDateTime = (): string => {
   const now = new Date();

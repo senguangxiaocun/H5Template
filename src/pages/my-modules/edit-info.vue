@@ -2,7 +2,6 @@
 import { closeToast, showLoadingToast, showSuccessToast } from "vant";
 import { reactive } from "vue";
 import upImg from "@/assets/public/aieibqikxvyafivasvc.png";
-import defaultHead from "@/assets/public/default-head.png";
 import { useFile } from "@/hooks/useFile";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";

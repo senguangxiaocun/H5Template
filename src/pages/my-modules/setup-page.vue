@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { AppCommunication } from "@/hooks/useJump";
-import RightIcon from "@/assets/public/right-icon.png";
 import { useJump } from "@/hooks/useJump";
 
 defineOptions({
