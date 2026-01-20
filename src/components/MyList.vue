@@ -89,7 +89,7 @@ onMounted(() => {
         </li>
       </ul>
       <van-icon
-        :color="keyData === 'fans' ? '#7564D1FF' : '#EC5B79FF'"
+        :color="props.type === 'fans' ? '#7564D1FF' : '#EC5B79FF'"
         :name="rightIcon"
         @click="onClick(item.userId, index)"
       />

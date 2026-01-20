@@ -128,7 +128,6 @@ const onSend = async (v: string) => {
             style="width: 16px"
             src="src/assets/public/fshegioe_ruhwobd.png"
             fit="cover"
-            @click="jumpToRecharge()"
           />
         </li>
         <li>
@@ -137,7 +136,6 @@ const onSend = async (v: string) => {
             style="width: 16px"
             src="src/assets/public/fshegioe_ruhwobd.png"
             fit="cover"
-            @click="jumpToRecharge()"
           />
         </li>
         <li>
@@ -146,7 +144,6 @@ const onSend = async (v: string) => {
             style="width: 16px"
             src="src/assets/public/fshegioe_ruhwobd.png"
             fit="cover"
-            @click="jumpToRecharge()"
           />
         </li>
       </ul>

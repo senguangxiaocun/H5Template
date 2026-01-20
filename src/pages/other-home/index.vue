@@ -23,7 +23,7 @@ const bottomList = ref<DynamicInfo[]>([]);
 const loading = ref(true);
 /** 是否显示关注 */
 const isShowFollow = ref(false);
-const allUserList = ref<UserInfo[]>(winUserListData);
+// const allUserList = ref<UserInfo[]>(winUserListData);
 
 const getData = () => {
   userInfo.value = winUserListData.find((v) => v.userId === queryId.value);

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { UploaderFileListItem } from "vant";
-import DeleteIcon from "@/assets/public/delete-icon.png";
 import { useFile } from "@/hooks/useFile";
 
 const { uploadToOSS } = useFile();

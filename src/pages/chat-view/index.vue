@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import MasonryIcon from "@/assets/public/ncaibf58nuv2_vdjudbjdvjbuvf.png";
 import { useAppImgStyle } from "@/hooks/useAppImgStyle";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
