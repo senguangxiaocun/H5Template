@@ -33,8 +33,8 @@ const onSubmit = async () => {
   }
 
   const data = {
+    dynamicTag: [],
     ...formData,
-    // dynamicTag: [],
     dynamicVideo: "",
     dynamicLikeCount: 0,
     dynamicCommentCount: 0,
