@@ -13,7 +13,7 @@ defineOptions({
 const { chatBgImage } = useAppImgStyle();
 const { winChatBotDesc } = useWindow();
 // const { userInfo } = useUserStore();
-const { jumpToRecharge, appParams, jumpToChatDetail } = useJump();
+const { jumpToRecharge, jumpToChatDetail } = useJump();
 
 /** 弹框  */
 const show = ref(false);
