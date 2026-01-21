@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import ChatBack from "@/assets/public/chat-index.png";
-import MasonryIcon from "@/assets/public/masonry-icon.png";
+// import MasonryIcon from "@/assets/public/masonry-icon.png";
 import { useAppImgStyle } from "@/hooks/useAppImgStyle";
 import { useJump } from "@/hooks/useJump";
 import { useWindow } from "@/hooks/useWindow";
-import { useUserStore } from "@/stores";
+// import { useUserStore } from "@/stores";
 
 defineOptions({
   name: "ChatView",
 });
 
 const { chatBgImage } = useAppImgStyle();
-const { winUserData, winUserListData, winChatBotDesc } = useWindow();
-const { userInfo } = useUserStore();
+const { winChatBotDesc } = useWindow();
+// const { userInfo } = useUserStore();
 const { jumpToRecharge, appParams, jumpToChatDetail } = useJump();
 
 /** 弹框  */
