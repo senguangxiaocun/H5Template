@@ -32,7 +32,7 @@ const show = defineModel<boolean>("show", {
 
 <style lang="less" scoped>
 .popup-bg {
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("/public/stacltinocep_osnicspeg.png");
   background-size: cover; /* 覆盖整个弹窗 */
   background-repeat: no-repeat;
   background-position: center;

@@ -164,7 +164,7 @@ onMounted(() => {
 .private-chat_box {
   min-height: 100vh;
   background: var(--ai-private-chat-bg-color);
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("~/public/stacltinocep_osnicspeg.png");
   background-size: cover;
   padding-bottom: 70px;
 }

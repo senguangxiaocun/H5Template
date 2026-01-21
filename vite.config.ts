@@ -21,7 +21,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           target: '', // Your backend API base URL
           ws: false,
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
+          rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
     },

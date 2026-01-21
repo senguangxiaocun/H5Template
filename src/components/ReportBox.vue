@@ -98,7 +98,7 @@ const onShield = async () => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0 30px;
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("/public/stacltinocep_osnicspeg.png");
   background-size: cover;
   background-repeat: no-repeat;
 

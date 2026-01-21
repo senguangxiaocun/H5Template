@@ -67,7 +67,7 @@ onMounted(() => {
   align-items: center;
   // 导入背景图
   // background: url('@/assets/public/call-bg.png');
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("/public/stacltinocep_osnicspeg.png");
   background-size: cover;
 }
 </style>

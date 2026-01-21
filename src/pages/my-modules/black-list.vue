@@ -15,7 +15,7 @@ defineOptions({
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
   min-height: 100vh;
   background: var(--ai-black-list-bg-color);
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("/public/stacltinocep_osnicspeg.png");
   background-size: cover;
 }
 </style>

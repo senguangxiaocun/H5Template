@@ -70,7 +70,7 @@ const onRecharge = () => {
 
 .top-box {
   border-radius: 20px;
-  background: url(src/assets/public/ncdsamn_jkqjcav.png);
+  background: url(/public/ncdsamn_jkqjcav.png);
   display: flex;
   align-items: center;
   padding: 20px;

@@ -108,7 +108,7 @@ const onSubmlt = async () => {
 .report-index_box {
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
   min-height: 100vh;
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("~/public/stacltinocep_osnicspeg.png");
   background-size: cover;
 }
 

@@ -100,7 +100,7 @@ const onSubmit = async () => {
 .publish-video_box {
   height: 100vh;
   padding-top: calc(var(--van-nav-bar-height) + var(--ai-view-padding-top));
-  background-image: url("src/assets/public/stacltinocep_osnicspeg.png");
+  background-image: url("~/public/stacltinocep_osnicspeg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

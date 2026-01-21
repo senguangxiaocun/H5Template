@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import ChatBack from '@/assets/public/chat-index.png'
-import MasonryIcon from '@/assets/public/masonry-icon.png'
-import { useAppImgStyle } from '@/hooks/useAppImgStyle'
-import { useJump } from '@/hooks/useJump'
-import { useWindow } from '@/hooks/useWindow'
-import { useUserStore } from '@/stores'
+import ChatBack from "@/assets/public/chat-index.png";
+import MasonryIcon from "@/assets/public/masonry-icon.png";
+import { useAppImgStyle } from "@/hooks/useAppImgStyle";
+import { useJump } from "@/hooks/useJump";
+import { useWindow } from "@/hooks/useWindow";
+import { useUserStore } from "@/stores";
 
 defineOptions({
-  name: 'ChatView'
-})
+  name: "ChatView",
+});
 
-const { chatBgImage } = useAppImgStyle()
-const { winUserData, winUserListData, winChatBotDesc } = useWindow()
-const { userInfo } = useUserStore()
-const { jumpToRecharge, appParams, jumpToChatDetail } = useJump()
+const { chatBgImage } = useAppImgStyle();
+const { winUserData, winUserListData, winChatBotDesc } = useWindow();
+const { userInfo } = useUserStore();
+const { jumpToRecharge, appParams, jumpToChatDetail } = useJump();
 
 /** 弹框  */
-const show = ref(false)
+const show = ref(false);
 
 const onSubmit = () => {
-  show.value = !(userInfo.coins >= winChatBotDesc.points)
-  if (userInfo.coins >= winChatBotDesc.points) {
-    const data = {
-      ...winUserData,
-      coins: userInfo.coins - winChatBotDesc.points
-    }
+  // show.value = !(userInfo.coins >= winChatBotDesc.points);
+  // if (userInfo.coins >= winChatBotDesc.points) {
+  //   const data = {
+  //     ...winUserData,
+  //     coins: userInfo.coins - winChatBotDesc.points,
+  //   };
 
-    const list = winUserListData.map((v) => {
-      if (v.userId === data.userId) {
-        v.coins = data.coins
-      }
-      return v
-    })
-    appParams({ key: 'updateUser', value: list, state: 1 })
-    jumpToChatDetail()
-  }
-}
+  // const list = winUserListData.map((v) => {
+  //   if (v.userId === data.userId) {
+  //     v.coins = data.coins;
+  //   }
+  //   return v;
+  // });
+  // appParams({ key: "updateUser", value: list, state: 1 });
+  jumpToChatDetail();
+  // }
+};
 </script>
 
 <template>
@@ -52,11 +52,12 @@ const onSubmit = () => {
         </li>
         <li flex justify-center class="public-btoom-btn">
           <p ai-gradient-btn class="bottom-btn public_btn" @click="onSubmit">
-            <van-image h-12 w-12 :src="MasonryIcon" fit="cover" />
-            <span text-4 font-400 ml-1 color="#FFEB3B">
+            <!-- <van-image h-12 w-12 :src="MasonryIcon" fit="cover" /> -->
+            <!-- <span text-4 font-400 ml-1 color="#FFEB3B">
               -{{ winChatBotDesc.points }}
-            </span>
+            </span> -->
             <span text-4 font-700 ml-8 mr-1 color="#FFFFFF">Chat</span>
+            <span text-4 font-700 ml-8 mr-1 color="#FFFFFF" />
           </p>
         </li>
       </ul>

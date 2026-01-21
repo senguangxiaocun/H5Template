@@ -148,7 +148,7 @@ const onSend = async (v: string) => {
 }
 .chat-details_box {
   min-height: 100vh;
-  background: url(src/assets/public/stacltinocep_osnicspeg.png);
+  background: url(/public/stacltinocep_osnicspeg.png);
   background-size: cover;
 }
 
