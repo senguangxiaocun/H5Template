@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useAppImgStyle } from '@/hooks/useAppImgStyle'
+import { useAppImgStyle } from "@/hooks/useAppImgStyle";
 
-const { inputSendIcon } = useAppImgStyle()
+const { inputSendIcon } = useAppImgStyle();
 
-const value = ref('')
+const value = ref("");
 
 const emit = defineEmits<{
-  send: [_: string]
-}>()
+  send: [_: string];
+}>();
 const onSend = () => {
-  emit('send', value.value)
-  value.value = ''
-}
+  emit("send", value.value);
+  value.value = "";
+};
 </script>
 
 <template>

@@ -55,7 +55,9 @@ const isReport = ref(false);
       <span mt-2 ai-text-desc>{{ item?.content || "" }}</span>
     </div>
 
-    <report-box v-model:show="isReport" />
+    <Teleport to="body">
+      <report-box v-model:show="isReport" />
+    </Teleport>
   </div>
 </template>
 
