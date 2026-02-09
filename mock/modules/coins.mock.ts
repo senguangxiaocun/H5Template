@@ -33,8 +33,8 @@ export default [
   },
   {
     key: 'caud5qnzba7diq2n',
-    cions: 5750,
-    meney: 13.99
+    cions: 5700,
+    meney: 14.99
   },
   {
     key: 'qeneimzhxzzkrpib',
